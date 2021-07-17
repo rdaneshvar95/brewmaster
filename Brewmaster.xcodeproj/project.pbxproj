@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		112D67CA26A205FD00972496 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D67C926A205FD00972496 /* AppDelegate.swift */; };
 		112D67CC26A205FD00972496 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D67CB26A205FD00972496 /* SceneDelegate.swift */; };
-		112D67CE26A205FD00972496 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D67CD26A205FD00972496 /* ViewController.swift */; };
 		112D67D126A205FD00972496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112D67CF26A205FD00972496 /* Main.storyboard */; };
 		112D67D326A2060100972496 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 112D67D226A2060100972496 /* Assets.xcassets */; };
 		112D67D626A2060100972496 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112D67D426A2060100972496 /* LaunchScreen.storyboard */; };
 		112D67E126A2060100972496 /* BrewmasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D67E026A2060100972496 /* BrewmasterTests.swift */; };
 		112D67EC26A2060100972496 /* BrewmasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D67EB26A2060100972496 /* BrewmasterUITests.swift */; };
+		119A184726A326EA00C6876A /* BeersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A184626A326EA00C6876A /* BeersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 		112D67C626A205FD00972496 /* Brewmaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewmaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		112D67C926A205FD00972496 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		112D67CB26A205FD00972496 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		112D67CD26A205FD00972496 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		112D67D026A205FD00972496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		112D67D226A2060100972496 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		112D67D526A2060100972496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		112D67E726A2060100972496 /* BrewmasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrewmasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		112D67EB26A2060100972496 /* BrewmasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewmasterUITests.swift; sourceTree = "<group>"; };
 		112D67ED26A2060100972496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		119A184626A326EA00C6876A /* BeersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +101,11 @@
 			children = (
 				112D67C926A205FD00972496 /* AppDelegate.swift */,
 				112D67CB26A205FD00972496 /* SceneDelegate.swift */,
-				112D67CD26A205FD00972496 /* ViewController.swift */,
 				112D67CF26A205FD00972496 /* Main.storyboard */,
 				112D67D226A2060100972496 /* Assets.xcassets */,
 				112D67D426A2060100972496 /* LaunchScreen.storyboard */,
 				112D67D726A2060100972496 /* Info.plist */,
+				119A184626A326EA00C6876A /* BeersTableViewController.swift */,
 			);
 			path = Brewmaster;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				112D67CE26A205FD00972496 /* ViewController.swift in Sources */,
+				119A184726A326EA00C6876A /* BeersTableViewController.swift in Sources */,
 				112D67CA26A205FD00972496 /* AppDelegate.swift in Sources */,
 				112D67CC26A205FD00972496 /* SceneDelegate.swift in Sources */,
 			);
