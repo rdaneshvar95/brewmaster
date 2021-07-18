@@ -17,6 +17,9 @@ class BeersTableViewController: UITableViewController {
         configureHeaderView()
 
         view.backgroundColor = AppColor.background
+
+        tableView.separatorColor = .darkGray
+        tableView.register(BeerTableViewCell.self, forCellReuseIdentifier: BeerTableViewCell.reuseIdentifier)
     }
 
     func configureTitleView() {
@@ -44,7 +47,7 @@ class BeersTableViewController: UITableViewController {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.backgroundColor = AppColor.yellow
-        containerView.layer.cornerRadius = 16
+        containerView.layer.cornerRadius = 14
 
         let title = NSMutableAttributedString(string: "Weekend Offers\n",
                                               attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .medium)])
@@ -82,5 +85,19 @@ class BeersTableViewController: UITableViewController {
         ])
 
         tableView.tableHeaderView = headerView
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: BeerTableViewCell.reuseIdentifier,
+                                                 for: indexPath) as! BeerTableViewCell
+        cell.configure(title: "Sunk Punk",
+                       subtitle: "Ocean Fermented Lager",
+                       details: "It's rumoured just a drop can calm the fiercest of storms. A balance of sweet sweet sweet sweet sweet sweet sweet sweet",
+                       image: UIImage(named: "promotion")!)
+        return cell
     }
 }
