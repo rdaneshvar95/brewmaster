@@ -14,6 +14,7 @@ class BeersTableViewController: UITableViewController {
 
         configureTitleView()
         configureNavigationBar()
+        configureHeaderView()
 
         view.backgroundColor = AppColor.background
     }
@@ -35,5 +36,51 @@ class BeersTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = AppColor.background
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = false
+    }
+
+    func configureHeaderView() {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 68))
+
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.backgroundColor = AppColor.yellow
+        containerView.layer.cornerRadius = 16
+
+        let title = NSMutableAttributedString(string: "Weekend Offers\n",
+                                              attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .medium)])
+        title.append(NSMutableAttributedString(string: "Free Shipping on orders over 60€",
+                                               attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .regular)]))
+
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        label.attributedText = title
+
+        let imageView = UIImageView(image: UIImage(named: "promotion"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+
+        containerView.addSubview(label)
+        containerView.addSubview(imageView)
+
+        headerView.addSubview(containerView)
+
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: headerView.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            containerView.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 12),
+            containerView.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: -12),
+
+            label.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            label.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16),
+            label.rightAnchor.constraint(equalTo: imageView.leftAnchor, constant: -12),
+
+            imageView.widthAnchor.constraint(equalToConstant: 60),
+            imageView.heightAnchor.constraint(equalToConstant: 60),
+            imageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            imageView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -12)
+        ])
+
+        tableView.tableHeaderView = headerView
     }
 }
