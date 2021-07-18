@@ -96,8 +96,17 @@ class BeersTableViewController: UITableViewController {
                                                  for: indexPath) as! BeerTableViewCell
         cell.configure(title: "Sunk Punk",
                        subtitle: "Ocean Fermented Lager",
-                       details: "It's rumoured just a drop can calm the fiercest of storms. A balance of sweet sweet sweet sweet sweet sweet sweet sweet",
+                       details: "It's rumoured just a drop can calm the fiercest of storms. A balance of sweet, salt and savoury, citrus, spruce and caramel. Fermented at the bottom of the North Sea, which just so happens to be the perfect temperature for lagers to ferment.",
                        image: UIImage(named: "promotion")!)
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsViewController = BeerDetailsViewController(title: "Sunk Punk",
+                                        subtitle: "Ocean Fermented Lager",
+                                        details: "It's rumoured just a drop can calm the fiercest of storms. A balance of sweet, salt and savoury, citrus, spruce and caramel. Fermented at the bottom of the North Sea, which just so happens to be the perfect temperature for lagers to ferment.",
+                                        image: UIImage(named: "promotion")!)
+        detailsViewController.modalPresentationStyle = .pageSheet
+        showDetailViewController(detailsViewController, sender: self)
     }
 }
