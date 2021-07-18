@@ -24,6 +24,8 @@ class BeerTableViewCell: UITableViewCell {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = .clear
+        selectionStyle = .none
+
         textLabel?.numberOfLines = 5
         textLabel?.textColor = .white
 
@@ -40,9 +42,9 @@ class BeerTableViewCell: UITableViewCell {
         imageView?.image = UIImage(named: "promotion")
 
         let text = NSMutableAttributedString()
-        text.append(NSAttributedString(string: title + "\n", attributes: titleAttributes))
-        text.append(NSAttributedString(string: subtitle + "\n\n", attributes: subtitleAttributes))
-        text.append(NSAttributedString(string: details, attributes: subtitleAttributes))
+        text.append(NSAttributedString(string: title, attributes: titleAttributes))
+        text.append(NSAttributedString(string: "\n" + subtitle, attributes: subtitleAttributes))
+        text.append(NSAttributedString(string: "\n\n" + details, attributes: subtitleAttributes))
 
         textLabel?.attributedText = text
     }
