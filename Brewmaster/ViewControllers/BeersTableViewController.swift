@@ -9,6 +9,8 @@ import UIKit
 
 class BeersTableViewController: UITableViewController {
 
+    private var dataSource: BeersDataSource!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +22,15 @@ class BeersTableViewController: UITableViewController {
 
         tableView.separatorColor = .darkGray
         tableView.register(BeerTableViewCell.self, forCellReuseIdentifier: BeerTableViewCell.reuseIdentifier)
+
+        NetworkManager().getBeers { [weak self] (beers) in
+            DispatchQueue.main.async {
+                self?.dataSource = BeersDataSource(beers: beers)
+                self?.tableView.dataSource = self?.dataSource
+
+                self?.tableView.reloadData()
+            }
+        }
     }
 
     func configureTitleView() {
@@ -87,25 +98,12 @@ class BeersTableViewController: UITableViewController {
         tableView.tableHeaderView = headerView
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BeerTableViewCell.reuseIdentifier,
-                                                 for: indexPath) as! BeerTableViewCell
-        cell.configure(title: "Sunk Punk",
-                       subtitle: "Ocean Fermented Lager",
-                       details: "It's rumoured just a drop can calm the fiercest of storms. A balance of sweet, salt and savoury, citrus, spruce and caramel. Fermented at the bottom of the North Sea, which just so happens to be the perfect temperature for lagers to ferment.",
-                       image: UIImage(named: "promotion")!)
-        return cell
-    }
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsViewController = BeerDetailsViewController(title: "Sunk Punk",
-                                        subtitle: "Ocean Fermented Lager",
-                                        details: "It's rumoured just a drop can calm the fiercest of storms. A balance of sweet, salt and savoury, citrus, spruce and caramel. Fermented at the bottom of the North Sea, which just so happens to be the perfect temperature for lagers to ferment.",
-                                        image: UIImage(named: "promotion")!)
+        let beer = dataSource.getBeer(at: indexPath.row)
+        let detailsViewController = BeerDetailsViewController(title: beer.name,
+                                                              subtitle: beer.tagline,
+                                                              details: beer.description,
+                                                              image: UIImage(named: "promotion")!)
         detailsViewController.modalPresentationStyle = .pageSheet
         showDetailViewController(detailsViewController, sender: self)
     }

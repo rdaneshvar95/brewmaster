@@ -20,11 +20,17 @@ class BeerTableViewCell: UITableViewCell {
         NSAttributedString.Key.foregroundColor : UIColor.lightGray
     ]
 
+    private var imageURL: String?
+    private let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 45, width: 25, height: 25))
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = .clear
         selectionStyle = .none
+
+        imageView?.contentMode = .scaleAspectFit
+        imageView?.addSubview(indicator)
 
         textLabel?.numberOfLines = 5
         textLabel?.textColor = .white
@@ -38,8 +44,20 @@ class BeerTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(title: String, subtitle: String, details: String, image: UIImage) {
-        imageView?.image = UIImage(named: "promotion")
+    func configure(title: String, subtitle: String, details: String, imageURL: String) {
+        imageView?.image = UIImage.placeholder(CGSize(width: 25, height: 120))
+
+        indicator.startAnimating()
+
+        self.imageURL = imageURL
+        NetworkManager().load(imageURL, width: 25) { image in
+            guard self.imageURL == imageURL else { return }
+
+            DispatchQueue.main.async {
+                self.indicator.stopAnimating()
+                self.imageView?.image = image
+            }
+        }
 
         let text = NSMutableAttributedString()
         text.append(NSAttributedString(string: title, attributes: titleAttributes))
