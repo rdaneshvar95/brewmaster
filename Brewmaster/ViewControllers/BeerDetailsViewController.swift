@@ -59,10 +59,14 @@ class BeerDetailsViewController: UIViewController {
         return label
     }()
 
-    init(title: String, subtitle: String, details: String, image: UIImage) {
+    init(title: String, subtitle: String, details: String, imageURL: String) {
         super.init(nibName: nil, bundle: nil)
 
-        imageView.image = UIImage(named: "promotion")
+        NetworkManager().load(imageURL) { image in
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }
 
         let text = NSMutableAttributedString()
         text.append(NSAttributedString(string: title, attributes: titleAttributes))
@@ -84,18 +88,23 @@ class BeerDetailsViewController: UIViewController {
         containerView.addSubview(imageView)
         containerView.addSubview(label)
 
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        label.setContentHuggingPriority(.required, for: .vertical)
+
         NSLayoutConstraint.activate([
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             containerView.leftAnchor.constraint(equalTo: view.leftAnchor),
             containerView.rightAnchor.constraint(equalTo: view.rightAnchor),
 
             imageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            imageView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 12),
+            imageView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 24),
+            imageView.heightAnchor.constraint(equalTo: label.heightAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 60),
 
             label.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
             label.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12),
-            label.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 12),
-            label.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -12)
+            label.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 24),
+            label.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24)
         ])
 
         let tapGestureRegocnizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))

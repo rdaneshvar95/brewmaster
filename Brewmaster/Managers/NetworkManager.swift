@@ -10,7 +10,7 @@ import UIKit
 struct NetworkManager {
     private let baseURL = "https://api.punkapi.com/v2/"
 
-    func load(_ imageURL: String, width: CGFloat, completion: @escaping (UIImage?) -> Void) {
+    func load(_ imageURL: String, completion: @escaping (UIImage?) -> Void) {
         if let image = CacheManager.shared.getImage(for: imageURL) {
             completion(image)
             return
@@ -19,7 +19,7 @@ struct NetworkManager {
         DispatchQueue.global().async {
             guard let url = URL(string: imageURL),
                   let data = try? Data(contentsOf: url),
-                  let image = UIImage(data: data)?.scale(width: width) else {
+                  let image = UIImage(data: data) else {
                 completion(nil)
                 return
             }

@@ -103,7 +103,7 @@ class BeersTableViewController: UITableViewController {
         let detailsViewController = BeerDetailsViewController(title: beer.name,
                                                               subtitle: beer.tagline,
                                                               details: beer.description,
-                                                              image: UIImage(named: "promotion")!)
+                                                              imageURL: beer.imageURL)
         detailsViewController.modalPresentationStyle = .pageSheet
         showDetailViewController(detailsViewController, sender: self)
     }
