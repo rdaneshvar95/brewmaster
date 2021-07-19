@@ -53,7 +53,7 @@ class BeersTableViewController: UITableViewController {
     }
 
     func configureHeaderView() {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 68))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
 
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,8 +80,8 @@ class BeersTableViewController: UITableViewController {
         headerView.addSubview(containerView)
 
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: headerView.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            containerView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 8),
+            containerView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -12),
             containerView.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 12),
             containerView.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: -12),
 

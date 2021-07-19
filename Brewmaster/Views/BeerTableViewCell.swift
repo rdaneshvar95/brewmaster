@@ -21,12 +21,13 @@ class BeerTableViewCell: UITableViewCell {
     ]
 
     private var imageURL: String?
-    private let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 45, width: 25, height: 25))
+    private let indicator = UIActivityIndicatorView(frame: CGRect(x: 15, y: 45, width: 25, height: 25))
 
     private let thumbnail: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         return imageView
     }()
 
@@ -70,6 +71,7 @@ class BeerTableViewCell: UITableViewCell {
     }
 
     func configure(title: String, subtitle: String, details: String, imageURL: String) {
+        thumbnail.image = nil
         indicator.startAnimating()
 
         self.imageURL = imageURL

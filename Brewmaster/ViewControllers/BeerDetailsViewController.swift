@@ -49,6 +49,7 @@ class BeerDetailsViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         return imageView
     }()
 
@@ -87,9 +88,6 @@ class BeerDetailsViewController: UIViewController {
 
         containerView.addSubview(imageView)
         containerView.addSubview(label)
-
-        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .vertical)
 
         NSLayoutConstraint.activate([
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
