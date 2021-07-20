@@ -1,5 +1,8 @@
 # ![alt brewmaster](https://static.wikia.nocookie.net/dota2_gamepedia/images/9/9b/Brewmaster_minimap_icon.png/revision/latest/scale-to-width-down/32?cb=20120717000923) brewmaster
- An iOS application that given a database of beers (provided by punkapi.com) allows the user to browse it as a list and to search beers by name (ex: "ipa").
+
+An iOS application that given a database of beers (provided by punkapi.com) allows the user to browse it as a list and to search beers by name (ex: "ipa").
+
+![GitHub](https://img.shields.io/github/license/rdaneshvar95/brewmaster) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/rdaneshvar95/brewmaster)
 
 The name of the project is inspired by a hero in [Dota 2](dota2.com).
 
