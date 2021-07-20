@@ -9,11 +9,8 @@ import UIKit
 
 class BeersDataSource: NSObject {
 
-    private var beers: [Beer]
-
-    init(beers: [Beer]) {
-        self.beers = beers
-    }
+    private let pageSize = 25
+    private var beers: [Beer] = []
 
     func getBeer(at index: Int) -> Beer {
         beers[index]
@@ -35,5 +32,19 @@ extension BeersDataSource: UITableViewDataSource {
         let beer = beers[indexPath.row]
         cell.configure(title: beer.name, subtitle: beer.tagline, details: beer.description, imageURL: beer.imageURL)
         return cell
+    }
+}
+
+extension BeersDataSource: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        guard indexPaths.contains(where: { $0.row >= beers.count - 1 }) else { return }
+
+        BeerService().getBeers(page: beers.count / pageSize, completion: { beers in
+            self.beers.append(contentsOf: beers)
+
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+        })
     }
 }

@@ -8,8 +8,6 @@
 import UIKit
 
 struct NetworkManager {
-    private let baseURL = "https://api.punkapi.com/v2/"
-
     func load(_ imageURL: String, completion: @escaping (UIImage?) -> Void) {
         if let image = CacheManager.shared.getImage(for: imageURL) {
             completion(image)
@@ -29,8 +27,7 @@ struct NetworkManager {
         }
     }
 
-    func request<T: Decodable>(path: String, completion: @escaping (T) -> Void) {
-        let url = URL(string: baseURL + path)!
+    func request<T: Decodable>(url: URL, completion: @escaping (T) -> Void) {
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             if let error = error {
                 print("Error with fetching beers: \(error)")

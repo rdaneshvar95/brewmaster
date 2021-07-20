@@ -9,7 +9,7 @@ import UIKit
 
 class BeersTableViewController: UITableViewController {
 
-    private var dataSource: BeersDataSource!
+    private let dataSource = BeersDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +21,14 @@ class BeersTableViewController: UITableViewController {
         view.backgroundColor = AppColor.background
 
         tableView.separatorColor = .darkGray
+        tableView.dataSource = dataSource
+        tableView.prefetchDataSource = dataSource
         tableView.register(BeerTableViewCell.self, forCellReuseIdentifier: BeerTableViewCell.reuseIdentifier)
 
-        BeerService().getBeers { [weak self] (beers) in
+        BeerService().getBeers { beers in
             DispatchQueue.main.async {
-                self?.dataSource = BeersDataSource(beers: beers)
-                self?.tableView.dataSource = self?.dataSource
-
-                self?.tableView.reloadData()
+                self.dataSource.append(beers)
+                self.tableView.reloadData()
             }
         }
     }
