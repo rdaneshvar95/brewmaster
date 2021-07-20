@@ -10,8 +10,8 @@ import UIKit
 class BeersDataSource: NSObject {
 
     private let pageSize = 25
-    private var beers: [Beer] = []
-    private var searchKey: String?
+    private(set) var beers: [Beer] = []
+    private(set) var searchKey: String?
 
     func getBeer(at index: Int) -> Beer {
         beers[index]
@@ -22,7 +22,8 @@ class BeersDataSource: NSObject {
     }
 
     func setSearchKey(searchKey: String?) {
-        self.searchKey = searchKey
+        self.searchKey = searchKey?.replacingOccurrences(of: " ", with: "_")
+
         self.beers.removeAll()
     }
 }
