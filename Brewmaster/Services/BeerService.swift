@@ -17,7 +17,7 @@ struct BeerService {
             queryItems.append(URLQueryItem(name: "page", value: "\(page)"))
         }
 
-        if let searchKey = searchKey {
+        if let searchKey = searchKey, searchKey.count > 0 {
             queryItems.append(URLQueryItem(name: "beer_name", value: searchKey))
         }
 

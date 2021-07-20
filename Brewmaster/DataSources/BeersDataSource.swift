@@ -11,6 +11,7 @@ class BeersDataSource: NSObject {
 
     private let pageSize = 25
     private var beers: [Beer] = []
+    private var searchKey: String?
 
     func getBeer(at index: Int) -> Beer {
         beers[index]
@@ -18,6 +19,11 @@ class BeersDataSource: NSObject {
 
     func append(_ beers: [Beer]) {
         self.beers.append(contentsOf: beers)
+    }
+
+    func setSearchKey(searchKey: String?) {
+        self.searchKey = searchKey
+        self.beers.removeAll()
     }
 }
 
@@ -39,7 +45,7 @@ extension BeersDataSource: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         guard indexPaths.contains(where: { $0.row >= beers.count - 1 }) else { return }
 
-        BeerService().getBeers(page: beers.count / pageSize, completion: { beers in
+        BeerService().getBeers(page: beers.count / pageSize, searchKey: searchKey, completion: { beers in
             self.beers.append(contentsOf: beers)
 
             DispatchQueue.main.async {

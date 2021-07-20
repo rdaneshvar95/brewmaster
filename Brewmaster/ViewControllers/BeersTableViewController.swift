@@ -9,6 +9,7 @@ import UIKit
 
 class BeersTableViewController: UITableViewController {
 
+    private let searchController = UISearchController(searchResultsController: nil)
     private let dataSource = BeersDataSource()
 
     override func viewDidLoad() {
@@ -24,6 +25,13 @@ class BeersTableViewController: UITableViewController {
         tableView.dataSource = dataSource
         tableView.prefetchDataSource = dataSource
         tableView.register(BeerTableViewCell.self, forCellReuseIdentifier: BeerTableViewCell.reuseIdentifier)
+        tableView.tableFooterView = UIView()
+
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
 
         BeerService().getBeers { beers in
             DispatchQueue.main.async {
@@ -106,5 +114,19 @@ class BeersTableViewController: UITableViewController {
                                                               imageURL: beer.imageURL)
         detailsViewController.modalPresentationStyle = .pageSheet
         showDetailViewController(detailsViewController, sender: self)
+    }
+}
+
+extension BeersTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchKey = searchController.searchBar.text
+
+        BeerService().getBeers(searchKey: searchKey) { beers in
+            DispatchQueue.main.async {
+                self.dataSource.setSearchKey(searchKey: searchKey)
+                self.dataSource.append(beers)
+                self.tableView.reloadData()
+            }
+        }
     }
 }
