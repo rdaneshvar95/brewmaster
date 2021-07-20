@@ -23,7 +23,7 @@ class BeersTableViewController: UITableViewController {
         tableView.separatorColor = .darkGray
         tableView.register(BeerTableViewCell.self, forCellReuseIdentifier: BeerTableViewCell.reuseIdentifier)
 
-        NetworkManager().getBeers { [weak self] (beers) in
+        BeerService().getBeers { [weak self] (beers) in
             DispatchQueue.main.async {
                 self?.dataSource = BeersDataSource(beers: beers)
                 self?.tableView.dataSource = self?.dataSource

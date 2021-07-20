@@ -194,8 +194,8 @@
 		1195E5EA26A5D12800F371EA /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				1170862426A4EB8C00D38A6F /* NetworkManager.swift */,
 				1195E5E826A5CDFF00F371EA /* CacheManager.swift */,
+				1170862426A4EB8C00D38A6F /* NetworkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";

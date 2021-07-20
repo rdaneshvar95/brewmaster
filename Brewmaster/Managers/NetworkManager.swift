@@ -29,9 +29,8 @@ struct NetworkManager {
         }
     }
 
-    func getBeers(completion: @escaping ([Beer]) -> Void) {
-        let url = URL(string: baseURL + "beers")!
-
+    func request<T: Decodable>(path: String, completion: @escaping (T) -> Void) {
+        let url = URL(string: baseURL + path)!
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             if let error = error {
                 print("Error with fetching beers: \(error)")
@@ -47,8 +46,8 @@ struct NetworkManager {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
-            if let data = data, let beers = try? decoder.decode([Beer].self, from: data) {
-                completion(beers)
+            if let data = data, let result = try? decoder.decode(T.self, from: data) {
+                completion(result)
             }
         })
         task.resume()
