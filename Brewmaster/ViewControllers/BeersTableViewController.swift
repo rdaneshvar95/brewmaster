@@ -9,6 +9,8 @@ import UIKit
 
 class BeersTableViewController: UITableViewController {
 
+    private let dataSource = BeersDataSource()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +21,16 @@ class BeersTableViewController: UITableViewController {
         view.backgroundColor = AppColor.background
 
         tableView.separatorColor = .darkGray
+        tableView.dataSource = dataSource
+        tableView.prefetchDataSource = dataSource
         tableView.register(BeerTableViewCell.self, forCellReuseIdentifier: BeerTableViewCell.reuseIdentifier)
+
+        BeerService().getBeers { beers in
+            DispatchQueue.main.async {
+                self.dataSource.append(beers)
+                self.tableView.reloadData()
+            }
+        }
     }
 
     func configureTitleView() {
@@ -42,7 +53,7 @@ class BeersTableViewController: UITableViewController {
     }
 
     func configureHeaderView() {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 68))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
 
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,8 +80,8 @@ class BeersTableViewController: UITableViewController {
         headerView.addSubview(containerView)
 
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: headerView.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            containerView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 8),
+            containerView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -12),
             containerView.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 12),
             containerView.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: -12),
 
@@ -87,25 +98,12 @@ class BeersTableViewController: UITableViewController {
         tableView.tableHeaderView = headerView
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BeerTableViewCell.reuseIdentifier,
-                                                 for: indexPath) as! BeerTableViewCell
-        cell.configure(title: "Sunk Punk",
-                       subtitle: "Ocean Fermented Lager",
-                       details: "It's rumoured just a drop can calm the fiercest of storms. A balance of sweet, salt and savoury, citrus, spruce and caramel. Fermented at the bottom of the North Sea, which just so happens to be the perfect temperature for lagers to ferment.",
-                       image: UIImage(named: "promotion")!)
-        return cell
-    }
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsViewController = BeerDetailsViewController(title: "Sunk Punk",
-                                        subtitle: "Ocean Fermented Lager",
-                                        details: "It's rumoured just a drop can calm the fiercest of storms. A balance of sweet, salt and savoury, citrus, spruce and caramel. Fermented at the bottom of the North Sea, which just so happens to be the perfect temperature for lagers to ferment.",
-                                        image: UIImage(named: "promotion")!)
+        let beer = dataSource.getBeer(at: indexPath.row)
+        let detailsViewController = BeerDetailsViewController(title: beer.name,
+                                                              subtitle: beer.tagline,
+                                                              details: beer.description,
+                                                              imageURL: beer.imageURL)
         detailsViewController.modalPresentationStyle = .pageSheet
         showDetailViewController(detailsViewController, sender: self)
     }
