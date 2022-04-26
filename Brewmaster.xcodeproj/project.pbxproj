@@ -21,6 +21,7 @@
 		1195E5E926A5CDFF00F371EA /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1195E5E826A5CDFF00F371EA /* CacheManager.swift */; };
 		1195E5EC26A5D35400F371EA /* BeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1195E5EB26A5D35400F371EA /* BeerService.swift */; };
 		119A184726A326EA00C6876A /* BeersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A184626A326EA00C6876A /* BeersTableViewController.swift */; };
+		11ACBC1D2817E91D00223B5F /* BrewmasterSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACBC1C2817E91D00223B5F /* BrewmasterSnapshotTests.swift */; };
 		11C1545026A4682000068BC4 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1544F26A4682000068BC4 /* BeerTableViewCell.swift */; };
 		11C1545626A4807B00068BC4 /* BeerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1545526A4807B00068BC4 /* BeerDetailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,13 @@
 			remoteInfo = Brewmaster;
 		};
 		112D67E826A2060100972496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 112D67BE26A205FD00972496 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 112D67C526A205FD00972496;
+			remoteInfo = Brewmaster;
+		};
+		11ACBC1E2817E91D00223B5F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 112D67BE26A205FD00972496 /* Project object */;
 			proxyType = 1;
@@ -63,6 +71,8 @@
 		1195E5E826A5CDFF00F371EA /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		1195E5EB26A5D35400F371EA /* BeerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerService.swift; sourceTree = "<group>"; };
 		119A184626A326EA00C6876A /* BeersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersTableViewController.swift; sourceTree = "<group>"; };
+		11ACBC1A2817E91D00223B5F /* BrewmasterSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrewmasterSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		11ACBC1C2817E91D00223B5F /* BrewmasterSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewmasterSnapshotTests.swift; sourceTree = "<group>"; };
 		11C1544F26A4682000068BC4 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		11C1545526A4807B00068BC4 /* BeerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +99,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		11ACBC172817E91D00223B5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,6 +114,7 @@
 			children = (
 				112D67C826A205FD00972496 /* Brewmaster */,
 				112D67DF26A2060100972496 /* BrewmasterTests */,
+				11ACBC1B2817E91D00223B5F /* BrewmasterSnapshotTests */,
 				112D67EA26A2060100972496 /* BrewmasterUITests */,
 				112D67C726A205FD00972496 /* Products */,
 			);
@@ -108,6 +126,7 @@
 				112D67C626A205FD00972496 /* Brewmaster.app */,
 				112D67DC26A2060100972496 /* BrewmasterTests.xctest */,
 				112D67E726A2060100972496 /* BrewmasterUITests.xctest */,
+				11ACBC1A2817E91D00223B5F /* BrewmasterSnapshotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,6 +227,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		11ACBC1B2817E91D00223B5F /* BrewmasterSnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				11ACBC1C2817E91D00223B5F /* BrewmasterSnapshotTests.swift */,
+			);
+			path = BrewmasterSnapshotTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -264,13 +291,31 @@
 			productReference = 112D67E726A2060100972496 /* BrewmasterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		11ACBC192817E91D00223B5F /* BrewmasterSnapshotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11ACBC222817E91D00223B5F /* Build configuration list for PBXNativeTarget "BrewmasterSnapshotTests" */;
+			buildPhases = (
+				11ACBC162817E91D00223B5F /* Sources */,
+				11ACBC172817E91D00223B5F /* Frameworks */,
+				11ACBC182817E91D00223B5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				11ACBC1F2817E91D00223B5F /* PBXTargetDependency */,
+			);
+			name = BrewmasterSnapshotTests;
+			productName = BrewmasterSnapshotTests;
+			productReference = 11ACBC1A2817E91D00223B5F /* BrewmasterSnapshotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		112D67BE26A205FD00972496 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					112D67C526A205FD00972496 = {
@@ -282,6 +327,10 @@
 					};
 					112D67E626A2060100972496 = {
 						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 112D67C526A205FD00972496;
+					};
+					11ACBC192817E91D00223B5F = {
+						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = 112D67C526A205FD00972496;
 					};
 				};
@@ -302,6 +351,7 @@
 				112D67C526A205FD00972496 /* Brewmaster */,
 				112D67DB26A2060100972496 /* BrewmasterTests */,
 				112D67E626A2060100972496 /* BrewmasterUITests */,
+				11ACBC192817E91D00223B5F /* BrewmasterSnapshotTests */,
 			);
 		};
 /* End PBXProject section */
@@ -325,6 +375,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		112D67E526A2060100972496 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11ACBC182817E91D00223B5F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -368,6 +425,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		11ACBC162817E91D00223B5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11ACBC1D2817E91D00223B5F /* BrewmasterSnapshotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -380,6 +445,11 @@
 			isa = PBXTargetDependency;
 			target = 112D67C526A205FD00972496 /* Brewmaster */;
 			targetProxy = 112D67E826A2060100972496 /* PBXContainerItemProxy */;
+		};
+		11ACBC1F2817E91D00223B5F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 112D67C526A205FD00972496 /* Brewmaster */;
+			targetProxy = 11ACBC1E2817E91D00223B5F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -641,6 +711,44 @@
 			};
 			name = Release;
 		};
+		11ACBC202817E91D00223B5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.rdaneshvar.BrewmasterSnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brewmaster.app/Brewmaster";
+			};
+			name = Debug;
+		};
+		11ACBC212817E91D00223B5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.rdaneshvar.BrewmasterSnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brewmaster.app/Brewmaster";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -676,6 +784,15 @@
 			buildConfigurations = (
 				112D67F726A2060100972496 /* Debug */,
 				112D67F826A2060100972496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11ACBC222817E91D00223B5F /* Build configuration list for PBXNativeTarget "BrewmasterSnapshotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11ACBC202817E91D00223B5F /* Debug */,
+				11ACBC212817E91D00223B5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
