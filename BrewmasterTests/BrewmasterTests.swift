@@ -104,7 +104,7 @@ class BrewmasterTests: XCTestCase {
     }
 
     func testDetailsPageHasTapGesture() {
-        let controller = BeerDetailsViewController(title: "", subtitle: "", details: "", imageURL: "")
+        let controller = BeerDetailsViewController(beerDetails: .mock)
         XCTAssertEqual(controller.view.gestureRecognizers?.count, 1)
     }
 

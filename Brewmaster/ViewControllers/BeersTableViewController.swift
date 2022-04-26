@@ -108,10 +108,11 @@ class BeersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let beer = dataSource.getBeer(at: indexPath.row)
-        let detailsViewController = BeerDetailsViewController(title: beer.name,
-                                                              subtitle: beer.tagline,
-                                                              details: beer.description,
-                                                              imageURL: beer.imageURL)
+        let beerDetails = BeerDetails(title: beer.name,
+                                      subtitle: beer.tagline,
+                                      details: beer.description,
+                                      imageURL: beer.imageURL)
+        let detailsViewController = BeerDetailsViewController(beerDetails: beerDetails)
         detailsViewController.modalPresentationStyle = .pageSheet
         showDetailViewController(detailsViewController, sender: self)
     }

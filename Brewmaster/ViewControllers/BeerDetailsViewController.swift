@@ -60,19 +60,19 @@ class BeerDetailsViewController: UIViewController {
         return label
     }()
 
-    init(title: String, subtitle: String, details: String, imageURL: String) {
+    init(beerDetails: BeerDetails) {
         super.init(nibName: nil, bundle: nil)
 
-        NetworkManager().load(imageURL) { image in
+        NetworkManager().load(beerDetails.imageURL) { image in
             DispatchQueue.main.async {
                 self.imageView.image = image
             }
         }
 
         let text = NSMutableAttributedString()
-        text.append(NSAttributedString(string: title, attributes: titleAttributes))
-        text.append(NSAttributedString(string: "\n" + subtitle, attributes: subtitleAttributes))
-        text.append(NSAttributedString(string: "\n\n" + details, attributes: detailsAttributes))
+        text.append(NSAttributedString(string: beerDetails.title, attributes: titleAttributes))
+        text.append(NSAttributedString(string: "\n" + beerDetails.subtitle, attributes: subtitleAttributes))
+        text.append(NSAttributedString(string: "\n\n" + beerDetails.details, attributes: detailsAttributes))
 
         label.attributedText = text
     }

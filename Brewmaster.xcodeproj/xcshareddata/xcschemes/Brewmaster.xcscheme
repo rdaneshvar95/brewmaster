@@ -49,6 +49,16 @@
                ReferencedContainer = "container:Brewmaster.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "11ACBC192817E91D00223B5F"
+               BuildableName = "BrewmasterSnapshotTests.xctest"
+               BlueprintName = "BrewmasterSnapshotTests"
+               ReferencedContainer = "container:Brewmaster.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
