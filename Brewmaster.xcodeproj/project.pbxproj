@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		1195E5EC26A5D35400F371EA /* BeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1195E5EB26A5D35400F371EA /* BeerService.swift */; };
 		119A184726A326EA00C6876A /* BeersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A184626A326EA00C6876A /* BeersTableViewController.swift */; };
 		11ACBC1D2817E91D00223B5F /* BrewmasterSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ACBC1C2817E91D00223B5F /* BrewmasterSnapshotTests.swift */; };
+		11ACBC252817E97A00223B5F /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 11ACBC242817E97A00223B5F /* SnapshotTesting */; };
 		11C1545026A4682000068BC4 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1544F26A4682000068BC4 /* BeerTableViewCell.swift */; };
 		11C1545626A4807B00068BC4 /* BeerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1545526A4807B00068BC4 /* BeerDetailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11ACBC252817E97A00223B5F /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +307,9 @@
 				11ACBC1F2817E91D00223B5F /* PBXTargetDependency */,
 			);
 			name = BrewmasterSnapshotTests;
+			packageProductDependencies = (
+				11ACBC242817E97A00223B5F /* SnapshotTesting */,
+			);
 			productName = BrewmasterSnapshotTests;
 			productReference = 11ACBC1A2817E91D00223B5F /* BrewmasterSnapshotTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -344,6 +349,9 @@
 				Base,
 			);
 			mainGroup = 112D67BD26A205FD00972496;
+			packageReferences = (
+				11ACBC232817E97A00223B5F /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 112D67C726A205FD00972496 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -798,6 +806,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		11ACBC232817E97A00223B5F /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		11ACBC242817E97A00223B5F /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11ACBC232817E97A00223B5F /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 112D67BE26A205FD00972496 /* Project object */;
 }
