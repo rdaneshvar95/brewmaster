@@ -4,7 +4,7 @@ An iOS application that given a database of beers (provided by punkapi.com) allo
 
 ![GitHub](https://img.shields.io/github/license/rdaneshvar95/brewmaster) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/rdaneshvar95/brewmaster)
 
-The name of the project is inspired by a hero in [Dota 2](dota2.com).
+The name of the project is inspired by a hero in [Dota 2](https://www.dota2.com).
 
 >![alt text](https://static.wikia.nocookie.net/dota2_gamepedia/images/1/1e/Brewmaster_icon.png/revision/latest/scale-to-width-down/256?cb=20160411210333)
 >
