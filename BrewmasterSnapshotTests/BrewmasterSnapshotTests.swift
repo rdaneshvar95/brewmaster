@@ -21,4 +21,16 @@ class BrewmasterSnapshotTests: XCTestCase {
         let viewController = BeerDetailsViewController(beerDetails: .mock)
         assertSnapshot(matching: viewController, as: .image(on: .iPhone8))
     }
+    
+    func testBeerDetailsViewController_longDetails() {
+        let longDetails = Array(repeating: "mockDetails", count: 100).joined(separator: "")
+        let mock = BeerDetails.mock
+        let mockWithLongDetails = BeerDetails(title: mock.title,
+                                              subtitle: mock.subtitle,
+                                              details: longDetails,
+                                              imageURL: mock.imageURL)
+
+        let viewController = BeerDetailsViewController(beerDetails: mockWithLongDetails)
+        assertSnapshot(matching: viewController, as: .image(on: .iPhone8))
+    }
 }
