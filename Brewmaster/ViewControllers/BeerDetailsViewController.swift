@@ -23,8 +23,15 @@ class BeerDetailsViewController: UIViewController {
         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .regular),
         NSAttributedString.Key.foregroundColor : UIColor.lightGray
     ]
+    
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.bounces = false
+        return scrollView
+    }()
 
-    private let containerView: UIView = {
+    private let contentView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 12
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -84,26 +91,39 @@ class BeerDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(containerView)
+        view.addSubview(scrollView)
 
-        containerView.addSubview(imageView)
-        containerView.addSubview(label)
+        scrollView.addSubview(contentView)
+
+        contentView.addSubview(imageView)
+        contentView.addSubview(label)
 
         NSLayoutConstraint.activate([
-            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            containerView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            containerView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            imageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            imageView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 24),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+
+            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 24),
             imageView.heightAnchor.constraint(equalTo: label.heightAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 60),
 
-            label.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
-            label.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
             label.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 24),
-            label.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24)
+            label.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -24)
         ])
+        
+        let preferredScrollViewHeightAnchor = scrollView.heightAnchor.constraint(equalTo: contentView.heightAnchor)
+        preferredScrollViewHeightAnchor.priority = .defaultLow
+        preferredScrollViewHeightAnchor.isActive = true
 
         let tapGestureRegocnizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGestureRegocnizer)
